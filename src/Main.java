@@ -24,4 +24,6 @@ public class Main {
         //Chamar os métodos
         dogCaramelo.andar(); dogBelga.andar();
     }
+
+
 }
