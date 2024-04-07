@@ -1,15 +1,11 @@
 public class Aluno {
-
     String nome;
-    float notaCP;
+    float notaCp;
     float notaChallenge;
-    float notaGS;
+    float notaGs;
 
     float mediaFinal(){
-        float media = notaCP * 0.2f + notaChallenge * 0.2f + notaGS * 0.6f;
-        return media
-
-
+        float media = notaCp * 0.2f + notaChallenge * 0.2f + notaGs * 0.6f;
+        return media;
     }
-
 }
