@@ -4,6 +4,11 @@ public class Cliente extends Pesssoa{
 
     private boolean assinante;
 
+    public Cliente(int id, String nome, String cpf, Endereco endereco, boolean assinante){
+        super(id, nome, cpf, endereco);
+        this.assinante = assinante;
+    }
+
     public void pagar(double valor){
         //Se for assinante tem 10% de desconto
         if (assinante){

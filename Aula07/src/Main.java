@@ -6,7 +6,8 @@ public class Main {
 
     public static void main(String[] args) {
         //Instanciar um funcionário
-        Funcionario funcionario = new Funcionario();
+        Funcionario funcionario = new Funcionario(01,"Cauã Aragão", "12345678900",
+                null, "Assistente técnico", 3000);
 
         //setar o nome e cargo do funcionário
         funcionario.setNome("Jorge Roberto");

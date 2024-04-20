@@ -6,6 +6,26 @@ public class Pesssoa {
     protected String nome;
     private String cpf;
 
+    private Endereco endereco;
+
+    //Criar um construtor com todos os atributos
+    public Pesssoa(int id, String nome, String cpf, Endereco endereco) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.endereco = endereco;
+    }
+
+
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
     public int getId() {
         return id;
     }
