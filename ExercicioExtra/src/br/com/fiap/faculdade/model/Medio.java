@@ -12,18 +12,18 @@ public class Medio extends Formacao {
     //Construtores
     public Medio(){}
 
-    public Medio(String descricao, String periodo, String tipo) {
+    public Medio(String descricao, TipoPeriodo periodo, String tipo) {
         super(descricao, periodo);
         this.tipo = tipo;
     }
 
     //Método
     @Override
-    public void definirDuracao(String curso) {
+    public void definirDuracao() {
         duracao = 36;
     }
     public double calcularMensalidade(double fator){
-        return getDuracao() * fator * 500;
+        return mensalidade = getDuracao() * fator * 500;
     }
 
     //Getter and Setter

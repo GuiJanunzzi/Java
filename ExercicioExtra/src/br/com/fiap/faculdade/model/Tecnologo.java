@@ -12,19 +12,19 @@ public class Tecnologo extends Formacao {
     //Construtores
     public Tecnologo(){}
 
-    public Tecnologo(String descricao, String periodo, double mensalidade, int duracao, boolean planoEstendido) {
-        super(descricao, periodo, mensalidade, duracao);
+    public Tecnologo(String descricao, TipoPeriodo periodo,  boolean planoEstendido) {
+        super(descricao, periodo);
         this.planoEstendido = planoEstendido;
     }
 
     //Método
     @Override
-    public void definirDuracao(String curso) {
+    public void definirDuracao() {
         duracao = 24;
     }
 
     public double calcularMensalidade(double fator){
-        return getDuracao() * fator * 600;
+        return mensalidade = getDuracao() * fator * 600;
     }
 
     //Getter and Setter
