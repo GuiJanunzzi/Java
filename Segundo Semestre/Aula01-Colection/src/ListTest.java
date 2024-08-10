@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class ListTest {
     public static void main(String[] args) {
 
         List<String> compras = new ArrayList<>();
@@ -44,9 +44,15 @@ public class Main {
         System.out.println("Posição(index) do chocolate na lista: " + compras.indexOf("chocolate"));
 
         //11-Criar uma sublista dos dois primeiros itens da lista
-        compras.subList(0, 3);
+        List<String> subLista = compras.subList(0, 2);
+
+        System.out.println("Sublista");
+        for (String item : subLista){
+            System.out.println(item);
+        }
 
         //Percorrer a lista e exibir o item da lista
+        System.out.println("Lista Completa");
         for (String item : compras){
             System.out.println(item);
         }
