@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Primeiro Semestre/Aula01/Aula01.iml" filepath="$PROJECT_DIR$/Primeiro Semestre/Aula01/Aula01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Primeiro Semestre/Aula02/Aula02.iml" filepath="$PROJECT_DIR$/Primeiro Semestre/Aula02/Aula02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Primeiro Semestre/Aula03/Aula03.iml" filepath="$PROJECT_DIR$/Primeiro Semestre/Aula03/Aula03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Primeiro Semestre/Aula04/Aula04.iml" filepath="$PROJECT_DIR$/Primeiro Semestre/Aula04/Aula04.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Primeiro Semestre/Aula05/Aula05.iml" filepath="$PROJECT_DIR$/Primeiro Semestre/Aula05/Aula05.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Primeiro Semestre/Aula06/Aula06.iml" filepath="$PROJECT_DIR$/Primeiro Semestre/Aula06/Aula06.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Primeiro Semestre/Aula07/Aula07.iml" filepath="$PROJECT_DIR$/Primeiro Semestre/Aula07/Aula07.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Primeiro Semestre/Aula08/Aula08.iml" filepath="$PROJECT_DIR$/Primeiro Semestre/Aula08/Aula08.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Primeiro Semestre/ExercicioExtra/ExercicioExtra.iml" filepath="$PROJECT_DIR$/Primeiro Semestre/ExercicioExtra/ExercicioExtra.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Java.iml" filepath="$PROJECT_DIR$/.idea/Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Segundo Semestre/Segundo Semestre.iml" filepath="$PROJECT_DIR$/Segundo Semestre/Segundo Semestre.iml" />
+    </modules>
+  </component>
+</project>
