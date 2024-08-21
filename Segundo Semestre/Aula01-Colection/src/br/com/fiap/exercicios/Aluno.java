@@ -66,10 +66,10 @@ public class Aluno {
     @Override
     public String toString() {
         return
-                "nome: " + nome +
-                "RM: " + rm +
-                "Idade: " + idade +
-                "Nota1: " + nota1 +
-                "Nota2: " + nota2;
+                "Nome: " + nome +
+                " RM: " + rm +
+                " Idade: " + idade +
+                " Nota1: " + nota1 +
+                " Nota2: " + nota2;
     }
 }

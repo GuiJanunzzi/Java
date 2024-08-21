@@ -3,6 +3,7 @@ package br.com.fiap.exercicios;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Exercicio02 {
 
@@ -26,7 +27,7 @@ public class Exercicio02 {
         int maiorIdade = 0;
         int menorIdade = alunos.get(0).getIdade();
         //Imprimir alunos
-        for(Aluno aluno: alunos){
+        for (Aluno aluno : alunos) {
             System.out.println(aluno);
             somaMediaGeral += aluno.media();
             somaIdadeGeral += aluno.getIdade();
@@ -38,10 +39,56 @@ public class Exercicio02 {
         alunos.toArray();
 
         System.out.println("O total de alunos cadastrados é: " + alunos.size());
-        System.out.println("Media de notas: " + somaMediaGeral/alunos.size());
-        System.out.println("Media de idade; " + somaIdadeGeral/alunos.size());
+        System.out.println("Media de notas: " + somaMediaGeral / alunos.size());
+        System.out.println("Media de idade; " + somaIdadeGeral / alunos.size());
         System.out.println("Maior idade: " + maiorIdade);
         System.out.println("Menor idade: " + menorIdade);
 
+        //Menu ao usuario
+        Scanner leitor = new Scanner(System.in);
+        System.out.println("Menu de opções:\n" +
+                "1- Imprimir nomes e médias de todos os alunos\n" +
+                "2- Imprimir nomes dos alunos que possuem média acima de 6.0\n" +
+                "3- Imprimir nomes dos alunos que possuem idade acima de 30\n" +
+                "4- Excluir os alunos com médias menores que 3.0\n" +
+                "5- Sair do sistema\n" +
+                "Escolha uma opção: ");
+        String escolha = leitor.next() + leitor.nextLine();
+
+        do {
+
+            switch (escolha) {
+                case "1":
+                    for (Aluno aluno : alunos) {
+                        System.out.println(aluno + "Média: " + aluno.media());
+                    }
+                    break;
+                case "2":
+                    for (Aluno aluno : alunos) {
+                        if (aluno.media() >= 6.0) {
+                            System.out.println(aluno);
+                        }
+                    }
+                    break;
+                case "3":
+                    for (Aluno aluno : alunos) {
+                        if (aluno.getIdade() >= 30) {
+                            System.out.println(aluno);
+                        }
+                        break;
+                    }
+                case "4":
+                    for (Aluno aluno : alunos) {
+                        if (aluno.media() <= 3.0) {
+                            //alunos.remove(aluno.indexOf());
+                        }
+                    }
+                case "5":
+                    escolha = "sair";
+                    break;
+            }
+
+
+        }while (!(escolha == "sair"));
     }
 }
