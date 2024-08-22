@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner();
+        //Scanner scanner = new Scanner();
         try {
             //Ler um número
             int numero = Integer.parseInt(JOptionPane.showInputDialog("Digite um número"));

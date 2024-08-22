@@ -1,17 +1,27 @@
 package br.com.fiap.model;
 
+import br.com.fiap.exception.MesesInvalidoException;
+
 public class Funcionario {
     private String nome;
     private double salario;
 
     //Métodos
-    public double calcularFerias(int dias){
-        double totalFerias = (salario/30)*dias;
-
+    public double calcularFerias(int dias) throws MesesInvalidoException {
+        //Validação de dias de ferias
+        if (dias < 1 || dias > 12)
+            throw new MesesInvalidoException("Quantidade de dias inválido!!");
+        return (salario + salario/3)*dias/30;
     }
 
-    public double calcularPlr(double metaObtida){
-
+    //5X salario proporcional a meta obtida e meses trabalhado
+    public double calcularPlr(boolean metaObtida, int meses) throws Exception{
+        //Validar o meses entre 1 e 12
+        if (meses < 1 || meses > 12)
+            throw  new Exception("Quantidade de meses inválido!!");
+        if (metaObtida)
+            return salario * 5 * meses/12;
+        return 0;
     }
 
     //Construtor
