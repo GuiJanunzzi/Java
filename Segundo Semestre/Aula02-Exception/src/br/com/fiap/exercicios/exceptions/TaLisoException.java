@@ -1,10 +1,10 @@
 package br.com.fiap.exercicios.exceptions;
 
-public class TaLisoExceptions extends Exception{
-    public TaLisoExceptions(String mensagem){
+public class TaLisoException extends Exception{
+    public TaLisoException(String mensagem){
         super(mensagem);
     }
-    public TaLisoExceptions(){
+    public TaLisoException(){
         super("O valor inserido é inválido!! Tu tá liso :(");
     }
 }

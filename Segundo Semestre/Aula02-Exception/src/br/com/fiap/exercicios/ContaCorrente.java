@@ -1,6 +1,6 @@
 package br.com.fiap.exercicios;
 
-import br.com.fiap.exercicios.exceptions.TaLisoExceptions;
+import br.com.fiap.exercicios.exceptions.TaLisoException;
 
 public class ContaCorrente {
     private double saldo;
@@ -8,7 +8,11 @@ public class ContaCorrente {
 
     //Construtor
     public ContaCorrente(double saldo, double limite) {
+        if (saldo < 0)
+            throw new RuntimeException("O saldo não pode ser negativo");
         this.saldo = saldo;
+        if (limite < 0)
+            throw new RuntimeException("O limite não pode ser negativo");
         this.limite = limite;
     }
 
@@ -17,7 +21,7 @@ public class ContaCorrente {
         if (valor < 0)
             throw new Exception("O valor do saque não pode ser negativo!!");
         if (valor > saldo)
-            throw new TaLisoExceptions();
+            throw new TaLisoException();
         saldo -= valor;
         System.out.println("Saque de R$" + valor + " realizado com sucesso!" );
         System.out.println("O saldo atual é: R$" + saldo);
@@ -37,17 +41,13 @@ public class ContaCorrente {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
     public double getLimite() {
         return limite;
     }
 
     public void setLimite(double limite) throws Exception{
         if (limite < 0)
-            throw new Exception("O valor do limite não pode ser negativo");
+            throw new RuntimeException("O valor do limite não pode ser negativo");
         this.limite = limite;
     }
 }
