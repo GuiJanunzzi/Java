@@ -10,7 +10,7 @@ public class EscritaArquivo {
 
         try {
             //Abrir o arquivo em modo escrita
-            FileWriter outputStream = new FileWriter("arquivo.txt");
+            FileWriter outputStream = new FileWriter("arquivo.txt", true);
             PrintWriter writer = new PrintWriter(outputStream);
 
             //Escrever no arquivo
@@ -23,6 +23,8 @@ public class EscritaArquivo {
         }catch (IOException e){
             System.err.println(e.getMessage());
         }
+
+
 
     }
 }
