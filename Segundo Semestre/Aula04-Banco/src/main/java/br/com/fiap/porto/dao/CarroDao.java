@@ -25,26 +25,73 @@ public class CarroDao {
         stmt.executeUpdate();
     }
 
-    public List<Carro> listar() throws SQLException, ClassNotFoundException{
-        List<Carro> carros = new ArrayList<>();
-        //Fazendo uma conexão
+    public Carro pesquisarPorId(int id) throws SQLException, ClassNotFoundException{
+        //Fazer uma conexão
         Connection conexao = ConnectionFactory.getConnection();
-        //Criando um statement
+
+        //Criar um PreparedStatement
+        PreparedStatement stmt = conexao.prepareStatement("select * from t_java_carro where id_caro = ?");
+
+        //Setar o id no comando SQL
+        stmt.setInt(1,id);
+
+        //Recuperar o registro, se existir
+
+
+        //Retornar o carro
+        return null;
+    }
+
+    public List<Carro> listar() throws SQLException, ClassNotFoundException{
+        //Fazer uma conexão
+        Connection conexao = ConnectionFactory.getConnection();
+        //Criar um statement
         Statement stmt = conexao.createStatement();
         //Executar uma pesquisa no banco de dados
-        ResultSet rs = stmt.executeQuery("select * from t_carro order by id_carro");//Ordenando pelo ID
-        //Percorrer todos os registros encontrados
+        ResultSet rs = stmt.executeQuery("select * from t_java_carro order by id_carro");//Ordenando pelo ID
+        //Criar lista de carro
+        List<Carro> carros = new ArrayList<>();
+        //Percorrer os registros encontrados
         while (rs.next()) {//Enquanto houver registro
             //Recuperar os valores das colunas do registro
             int id = rs.getInt("id_carro");
             String modelo = rs.getString("ds_modelo");
             String placa = rs.getString("nr_placa");
-            double motor = rs.getDouble("ds_motor");
-            int automatico = rs.getInt("ds_automatico");
-
-            carros.add(id,modelo,placa,motor,automatico);
+            float motor = rs.getFloat("ds_motor");
+            boolean automatico = rs.getBoolean("ds_automatico");
+            //Criando um objeto carro
+            Carro carro = new Carro(id,modelo,placa,motor,automatico);
+            carros.add(carro);
         }
-        return null
+        //Retornando a lista de carro
+        return carros;
+    }
+
+    public void atualizar(Carro carro) throws SQLException, ClassNotFoundException{
+        //Criar a conexão
+        Connection conexao = ConnectionFactory.getConnection();
+        //Criar o PreparedStatement
+        PreparedStatement stmt = conexao.prepareStatement("update T_JAVA_CARRO set ds_modelo = ?, " +
+                "nr_placa = ?, ds_motor = ?, ds_automatico = ? where id_carro = ?");
+        //Setar os valores no SQL
+        stmt.setString(1, carro.getModelo());
+        stmt.setString(2, carro.getNumeroPlaca());
+        stmt.setFloat(3, carro.getMotor());
+        stmt.setBoolean(4, carro.isAutomatico());
+        stmt.setInt(5, carro.getId());
+        //Execuar o comando
+        stmt.executeUpdate();
+    }
+
+    public void excluir(int id) throws SQLException, ClassNotFoundException{
+        //Criar a conexão
+        Connection conexao = ConnectionFactory.getConnection();
+        //Criar o PreparedStatement
+        PreparedStatement stmt = conexao.prepareStatement("delete from t_java_carro where id_carro = ?");
+        //Setar os valores no SQL
+        stmt.setInt(1, id);
+        //Execuar o comando
+        stmt.executeUpdate();
     }
 
 }

@@ -1,11 +1,11 @@
-package br.com.fiap.porto.main;
+package br.com.fiap.porto.mainDao;
 
 import br.com.fiap.porto.Model.Carro;
 import br.com.fiap.porto.dao.CarroDao;
 
 import javax.swing.*;
 
-public class MainCarro {
+public class CadastroDaoTest {
 
     public static void main(String[] args) {
         //Ler os dados do carro
@@ -26,4 +26,5 @@ public class MainCarro {
             System.err.println(e.getMessage());
         }
     }
+
 }
