@@ -6,6 +6,15 @@ create table t_carro (
     ds_automatico number(1)
 );
 
+create table t_java_concessionaria(
+    id_conssecionaria number(10) primary key,
+    nm_concessionaria varchar(30) not null,
+    nr_cnpj varchar(14) not null,
+    nr_veiculo_maximo number(5)
+);
+
+create sequence sq_t_concessionaria INCREMENT by 1 START with 1 nocache;
+
 create sequence sq_t_carro INCREMENT by 1 START with 1 nocache;
 
 --Inserir uma linha na tabela

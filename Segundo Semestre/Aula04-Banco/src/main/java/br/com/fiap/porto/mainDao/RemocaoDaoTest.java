@@ -9,7 +9,7 @@ public class RemocaoDaoTest {
 
         try {
             //Chamar o método para excluir
-            carroDao.excluir(8);
+            carroDao.excluir(9);
             System.out.println("Veiculo removido com sucesso!");
         } catch (Exception e) {
             System.err.println(e.getMessage());;

@@ -10,7 +10,7 @@ public class AtualizacaoDaoTest {
         //Pedir para o usuário os dados do carro para atualização
 
         //Criar o objeto carro (Com ID)
-        Carro carro = new Carro(8, "Gol", "QWE5678", 1, false);
+        Carro carro = new Carro(9, "Gol", "QWE5678", 1, false);
 
         //Criar o objeto DAO
         CarroDao carroDao = new CarroDao();
