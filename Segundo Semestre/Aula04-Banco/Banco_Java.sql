@@ -1,4 +1,4 @@
-create table t_carro (
+create table t_java_carro (
     id_carro number(10) PRIMARY KEY,
     ds_modelo varchar(80) not null,
     nr_placa varchar(7),
@@ -24,3 +24,6 @@ insert into t_carro (id_carro, ds_modelo, nr_placa, ds_motor, ds_automatico) val
 
 --selecionar todos os registros da tabela
 select * from t_carro;
+
+alter table t_java_carro add (fk_id_concessionaria number(10))
+add foreign key (fk_id_concessionaria) references t_java_concessionaria(id_concessionaria);

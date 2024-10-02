@@ -1,9 +1,7 @@
-package br.com.fiap.porto.mainDao;
+package br.com.fiap.porto.mainCarroDao;
 
 import br.com.fiap.porto.Model.Carro;
 import br.com.fiap.porto.dao.CarroDao;
-
-import java.sql.SQLException;
 
 public class AtualizacaoDaoTest {
     public static void main(String[] args) {

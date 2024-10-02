@@ -1,10 +1,7 @@
-package br.com.fiap.porto.mainDao;
+package br.com.fiap.porto.mainCarroDao;
 
 import br.com.fiap.porto.Model.Carro;
 import br.com.fiap.porto.dao.CarroDao;
-import br.com.fiap.porto.exception.IdNaoEncontradoException;
-
-import java.sql.SQLException;
 
 public class PesquisaPorIdTeste {
 
@@ -16,10 +13,7 @@ public class PesquisaPorIdTeste {
             Carro carro = carroDao.pesquisarPorId(7);
 
             //Exibir os dados do carro
-            System.out.println("Id: " + carro.getId() + " ,Modelo: " + carro.getModelo() +
-                            " ,Placa: " + carro.getNumeroPlaca() +
-                            " ,Motor: " + carro.getMotor() +
-                            " ,Automático? " + carro.isAutomatico());
+            System.out.println(carro);
         }catch (Exception e) {
             System.err.println(e.getMessage());
         }

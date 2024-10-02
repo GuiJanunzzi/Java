@@ -1,4 +1,4 @@
-package br.com.fiap.porto.mainDao;
+package br.com.fiap.porto.mainCarroDao;
 
 import br.com.fiap.porto.Model.Carro;
 import br.com.fiap.porto.dao.CarroDao;
@@ -14,8 +14,9 @@ public class CadastroDaoTest {
         float motor = Float.parseFloat(JOptionPane.showInputDialog("Digite o motor do carro: "));
         boolean automatico = JOptionPane.showConfirmDialog(null, "É automático?",
                 "Automático",JOptionPane.YES_NO_OPTION) == 0;
+        int concessionaria = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID da concessionaria (Se houver): "));
         //Instanciar o carro
-        Carro carroInsrt = new Carro(modelo, placa, motor, automatico);
+        Carro carroInsrt = new Carro(modelo, placa, motor, automatico, concessionaria);
         //Instanciar o DAO
         CarroDao carroDao = new CarroDao();
         //Chamar o método para cadastrar

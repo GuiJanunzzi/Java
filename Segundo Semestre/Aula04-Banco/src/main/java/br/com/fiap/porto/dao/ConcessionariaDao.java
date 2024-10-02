@@ -10,12 +10,16 @@ import java.util.List;
 
 public class ConcessionariaDao {
 
+    private Connection conexao;
+
+    //Realizando a conexão com o banco de dados por meio da conexão vinda do construtor
+    public ConcessionariaDao(Connection connection){this.conexao = connection;}
+
     public void cadastrar(Concessionaria concessionaria) throws SQLException, ClassNotFoundException{
-        //Realizando a conexão com o banco
-        Connection conexao = ConnectionFactory.getConnection();
         //Criando PreparedStatement
-        PreparedStatement stm = conexao.prepareStatement("insert into t_java_concessionaria (id_concessionaria, nm_concessionaria, nr_cnpj, nr_veiculo_maximo) " +
-                "values (sq_t_concessionaria.nextval ?,?,?)");
+        PreparedStatement stm = conexao.prepareStatement("insert into t_java_concessionaria (id_concessionaria, " +
+                "nm_concessionaria, nr_cnpj, nr_veiculo_maximo) " +
+                "values (sq_t_concessionaria.nextval, ?,?,?)");
         stm.setString(1, concessionaria.getNome());
         stm.setString(2, concessionaria.getCnpj());
         stm.setInt(3, concessionaria.getQtdVeiculoMaximo());
@@ -25,8 +29,6 @@ public class ConcessionariaDao {
     }
 
     public List<Concessionaria> listar() throws  SQLException, ClassNotFoundException{
-        //Realizando a conexão com o banco
-        Connection conexao = ConnectionFactory.getConnection();
         //Criando um Statement
         Statement stm = conexao.createStatement();
         //Criando um Result Set
@@ -47,8 +49,6 @@ public class ConcessionariaDao {
     }
 
     public void atualizar(Concessionaria concessionaria) throws IdNaoEncontradoException ,SQLException, ClassNotFoundException{
-        //Realizando uma conexão
-        Connection conexao = ConnectionFactory.getConnection();
         //Criando um PreparedStatement
         PreparedStatement stm = conexao.prepareStatement("update t_java_concessionaria set nm_concessionaria = ?, " +
                 "nr_cnpj = ?, nr_veiculo_maximo = ? where id_concessionaria = ?");
@@ -66,8 +66,6 @@ public class ConcessionariaDao {
     }
 
     public void excluir(int id) throws IdNaoEncontradoException ,SQLException, ClassNotFoundException{
-        //Realizando uma conexão
-        Connection conexao = ConnectionFactory.getConnection();
         //Criando um PreparedStatement
         PreparedStatement stm = conexao.prepareStatement("delete from t_java_concessionaria where id_concessionaria = ?");
         //Setando os valores no banco

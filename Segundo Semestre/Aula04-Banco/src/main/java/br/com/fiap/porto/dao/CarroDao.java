@@ -14,14 +14,16 @@ public class CarroDao {
     public void cadastrar(Carro carro) throws SQLException, ClassNotFoundException {
         //Fazendo uma conexão
         Connection conexao = ConnectionFactory.getConnection();
+
         //Criar um statement configurável
         PreparedStatement stmt = conexao.prepareStatement("insert into t_java_carro (id_carro, ds_modelo, nr_placa, ds_motor, ds_automatico) " +
-                "values (sq_t_carro.nextval, ?,?,?,?)");
+                "values (sq_t_carro.nextval, ?,?,?,?,?)");
         //Setar os valores do carro na query
         stmt.setString(1, carro.getModelo());
         stmt.setString(2, carro.getNumeroPlaca());
         stmt.setFloat(3, carro.getMotor());
         stmt.setBoolean(4, carro.isAutomatico());
+        stmt.setInt(5, carro.getConcessionaria().getId());
         //Executar o comando SQL
         stmt.executeUpdate();
     }

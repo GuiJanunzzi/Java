@@ -7,6 +7,9 @@ public class Concessionaria {
     private int QtdVeiculoMaximo;
 
     //Construtor
+    public Concessionaria() {
+    }
+
     public Concessionaria(String nome, String cnpj, int qtdVeiculoMaximo) {
         this.nome = nome;
         this.cnpj = cnpj;
