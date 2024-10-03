@@ -37,12 +37,7 @@ public class ConcessionariaDao {
         List<Concessionaria> concessionarias= new ArrayList<>();
         //Recuperando concessionarias
         while (rs.next()) {
-            int id = rs.getInt("id_concessionaria");
-            String nome = rs.getString("nm_concessionaria");
-            String cnpj = rs.getString("nr_cnpj");
-            int nrMaxCarro = rs.getInt("nr_veiculo_maximo");
-            //Instanciando uma concessionaria
-            Concessionaria concessionaria = new Concessionaria(id, nome, cnpj,nrMaxCarro);
+            Concessionaria concessionaria = parseConcessionaria(rs);
             concessionarias.add(concessionaria);
         }
         return concessionarias;
@@ -67,7 +62,8 @@ public class ConcessionariaDao {
 
     public void excluir(int id) throws IdNaoEncontradoException ,SQLException, ClassNotFoundException{
         //Criando um PreparedStatement
-        PreparedStatement stm = conexao.prepareStatement("delete from t_java_concessionaria where id_concessionaria = ?");
+        PreparedStatement stm = conexao.prepareStatement("delete from t_java_concessionaria " +
+                                                            "where id_concessionaria = ?");
         //Setando os valores no banco
         stm.setInt(1, id);
         //Executando o comando
@@ -76,6 +72,31 @@ public class ConcessionariaDao {
             throw new IdNaoEncontradoException("Concessionaria não encontrada");
         }
         System.out.println("Concessionaria removida com sucesso!");
+    }
+
+    public Concessionaria pesquisarPoiId(int id)throws IdNaoEncontradoException, SQLException, ClassNotFoundException{
+        //Crinado um PreparedStatement
+        PreparedStatement stm = conexao.prepareStatement("select * from t_java_concessionaria " +
+                                                        "where id_concessionaria = ? ");
+        //Setar o id no comando SQL
+        stm.setInt(1, id);
+        //Executar o comando SQL
+        ResultSet rs = stm.executeQuery();
+        //Recuperar o registro, se existir
+        if (!rs.next()){
+            throw new IdNaoEncontradoException("Concessionaria não encontrada");
+        }
+        return parseConcessionaria(rs);
+    }
+
+    //Método para recuperar concessionarias do banco
+    private Concessionaria parseConcessionaria(ResultSet rs) throws SQLException {
+        int id = rs.getInt("id_concessionaria");
+        String nome = rs.getString("nm_concessionaria");
+        String cnpj = rs.getString("nr_cnpj");
+        int nrMaxCarro = rs.getInt("nr_veiculo_maximo");
+        //Instanciando uma concessionaria
+        return new Concessionaria(id, nome, cnpj,nrMaxCarro);
     }
 
 }

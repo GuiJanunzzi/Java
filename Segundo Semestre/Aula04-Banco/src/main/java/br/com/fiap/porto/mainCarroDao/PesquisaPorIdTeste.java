@@ -2,13 +2,16 @@ package br.com.fiap.porto.mainCarroDao;
 
 import br.com.fiap.porto.Model.Carro;
 import br.com.fiap.porto.dao.CarroDao;
+import br.com.fiap.porto.factory.ConnectionFactory;
 
 public class PesquisaPorIdTeste {
 
     public static void main(String[] args) {
-        CarroDao carroDao = new CarroDao();
+
 
         try {
+            CarroDao carroDao = new CarroDao(ConnectionFactory.getConnection());
+
             //Pesquisar um carro pelo ID
             Carro carro = carroDao.pesquisarPorId(7);
 

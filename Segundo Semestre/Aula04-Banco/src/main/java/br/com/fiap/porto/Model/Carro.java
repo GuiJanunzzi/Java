@@ -17,6 +17,13 @@ public class Carro {
         this.concessionaria = concessionaria;
     }
 
+    public Carro(String modelo, String numeroPlaca, float motor, boolean automatico) {
+        this.modelo = modelo;
+        this.numeroPlaca = numeroPlaca;
+        this.motor = motor;
+        this.automatico = automatico;
+    }
+
     public Carro(int id, String modelo, String numeroPlaca, float motor, boolean automatico) {
         this.id = id;
         this.modelo = modelo;
