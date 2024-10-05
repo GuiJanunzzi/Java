@@ -81,13 +81,17 @@ public class CarroDao {
     public void atualizar(Carro carro) throws IdNaoEncontradoException, SQLException, ClassNotFoundException{
         //Criar o PreparedStatement
         PreparedStatement stmt = conexao.prepareStatement("update T_JAVA_CARRO set ds_modelo = ?, " +
-                "nr_placa = ?, ds_motor = ?, ds_automatico = ? where id_carro = ?");
+                "nr_placa = ?, ds_motor = ?, ds_automatico = ?, fk_id_concessionaria = ? where id_carro = ?");
         //Setar os valores no SQL
         stmt.setString(1, carro.getModelo());
         stmt.setString(2, carro.getNumeroPlaca());
         stmt.setFloat(3, carro.getMotor());
         stmt.setBoolean(4, carro.isAutomatico());
-        stmt.setInt(5, carro.getId());
+        if (carro.getConcessionaria() != null)
+            stmt.setInt(5, carro.getConcessionaria().getId());
+        else
+            stmt.setNull(5, Types.INTEGER);
+        stmt.setInt(6, carro.getId());
         //Execuar o comando
         int linhas = stmt.executeUpdate();
         if (linhas == 0){

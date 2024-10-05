@@ -1,7 +1,9 @@
 package br.com.fiap.porto.mainCarroDao;
 
 import br.com.fiap.porto.Model.Carro;
+import br.com.fiap.porto.Model.Concessionaria;
 import br.com.fiap.porto.dao.CarroDao;
+import br.com.fiap.porto.dao.ConcessionariaDao;
 import br.com.fiap.porto.factory.ConnectionFactory;
 
 public class AtualizacaoDaoTest {
@@ -9,9 +11,14 @@ public class AtualizacaoDaoTest {
         //Pedir para o usuário os dados do carro para atualização
 
         //Criar o objeto carro (Com ID)
-        Carro carro = new Carro(9, "Gol", "QWE5678", 1, false);
+        Carro carro = new Carro(11, "Gol", "QWE5678", 1, false);
 
         try {
+            ConcessionariaDao concessionariaDao = new ConcessionariaDao(ConnectionFactory.getConnection());
+            //Pesquisar uma Concessionaria
+            Concessionaria concessionaria = concessionariaDao.pesquisarPoiId(1);
+            //Atribua a concessionaria no carro
+            carro.setConcessionaria(concessionaria);
             //Criar o objeto DAO
             CarroDao carroDao = new CarroDao(ConnectionFactory.getConnection());
 
