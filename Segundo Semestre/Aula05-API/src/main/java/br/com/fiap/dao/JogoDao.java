@@ -24,9 +24,13 @@ public class JogoDao {
     }
 
     public void cadastrar(Jogo jogo) throws SQLException {
-        PreparedStatement stmt = conexao.prepareStatement(INSERT_SQL);
+        PreparedStatement stmt = conexao.prepareStatement(INSERT_SQL, new String[] {"id_jogo"});
         preencherStatementComJogo(stmt, jogo);
         stmt.executeUpdate();
+        //Recuperar o id gerado pela sequence
+        ResultSet resultSet = stmt.getGeneratedKeys();
+        resultSet.next();
+        jogo.setId((resultSet.getInt(1)));
     }
 
     public Jogo pesquisarPorId(int id) throws IdNaoEncontradoException, SQLException {
