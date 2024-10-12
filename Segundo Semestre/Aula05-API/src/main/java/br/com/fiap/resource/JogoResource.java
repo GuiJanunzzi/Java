@@ -45,14 +45,36 @@ public class JogoResource {
     @PUT
     @Path("/{id}")
     public Response atualizar(Jogo jogo, @PathParam("id") int id) throws SQLException, IdNaoEncontradoException{
+        //Setar o ID no jogo
         jogo.setId(id);
+        //Atualizar o jogo
         jogoDao.atualizar(jogo);
+        //Retornar o status 200 OK
+        return Response.ok().build();
+    }
+
+    @PATCH//Realizar a atualização parcial do objeto
+    @Path("/{id}")
+    public Response atualizarParcial(Jogo jogo, @PathParam("id") int id) throws  SQLException, IdNaoEncontradoException{
+        //Pesquisar o jogo no banco de dados
+        Jogo jogoBanco = jogoDao.pesquisarPorId(id);
+        //Verifica se existe valor no objeto recebido, eu seto o novo valor no objeto do banco
+        if (jogo.getNome() != null)
+            jogoBanco.setNome(jogo.getNome());
+        if (jogo.getDataLancamento() != null)
+            jogoBanco.setDataLancamento(jogo.getDataLancamento());
+        if (jogo.getClassificacao() != null)
+            jogoBanco.setClassificacao(jogo.getClassificacao());
+        jogoDao.atualizar(jogoBanco);
         return Response.ok().build();
     }
 
     @DELETE
     @Path(("/{id}"))
-    public void remover(@PathParam("id") int id) throws SQLException, IdNaoEncontradoException{
+    public Response remover(@PathParam("id") int id) throws SQLException, IdNaoEncontradoException{
+        //Removendo o jogo
         jogoDao.remover(id);
+        //Retornando o Status 204
+        return Response.noContent().build();
     }
 }
