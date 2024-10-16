@@ -18,6 +18,11 @@ public class Jogo {
     private LocalDate dataLancamento;
     private Classificacao classificacao;
 
-
-
+    @Override
+    public String toString() {
+        return "ID: " + id +
+                ", Nome: " + nome +
+                ", Data de Lançamento: " + dataLancamento +
+                ", Classificação: " + classificacao;
+    }
 }

@@ -16,6 +16,8 @@ public class JogoDao {
     private static final String SELECT_ALL_SQL = "SELECT * FROM T_JOGO";
     private static final String UPDATE_SQL = "UPDATE T_JOGO SET ds_nome = ?, dt_lancamento = ?, ds_classificacao = ? WHERE id_jogo = ?";
     private static final String DELETE_SQL = "DELETE FROM T_JOGO WHERE id_jogo = ?";
+    private static final String SELECT_BY_NAME= "SELECT * FROM T_JOGO WHERE ds_nome LIKE ?";
+
 
     private Connection conexao;
 
@@ -49,6 +51,22 @@ public class JogoDao {
         while (rs.next())
             jogos.add(parseJogo(rs));
         return jogos;
+    }
+
+    public List<Jogo> pesquisarPorNome(String nome) throws SQLException, IdNaoEncontradoException{
+        System.out.println("Lista de nomes");
+        PreparedStatement stmt = conexao.prepareStatement(SELECT_BY_NAME);
+        stmt.setString(1, "%" + nome + "%");
+        ResultSet rs = stmt.executeQuery();
+        List<Jogo> lista = new ArrayList<>();
+        while (rs.next()){
+            lista.add(parseJogo(rs));
+        }
+        if (lista.isEmpty()){
+            throw new IdNaoEncontradoException("Nome não encontrado na base de dados");
+        }
+        return lista;
+
     }
 
     public void atualizar(Jogo jogo) throws IdNaoEncontradoException, SQLException {

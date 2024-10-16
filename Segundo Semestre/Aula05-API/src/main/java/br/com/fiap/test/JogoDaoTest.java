@@ -35,7 +35,7 @@ public class JogoDaoTest {
             }
 
             // 3. Teste de Pesquisa por ID
-            Jogo jogoPesquisado = dao.pesquisarPorId(1); // Ajustar o ID conforme necessário
+            Jogo jogoPesquisado = dao.pesquisarPorId(13); // Ajustar o ID conforme necessário
             System.out.println("Jogo pesquisado: " + jogoPesquisado);
 
             // 4. Teste de Atualização
@@ -57,6 +57,16 @@ public class JogoDaoTest {
                 dao.pesquisarPorId(jogoAtualizado.getId());
             } catch (IdNaoEncontradoException e) {
                 System.out.println("Jogo não encontrado após remoção (conforme esperado).");
+            }
+
+            // 8. Teste de Pesquisa por nome
+            try{
+                List<Jogo> jogos = dao.pesquisarPorNome("FIFA");
+                for (Jogo j : jogos){
+                    System.out.println(j);
+                }
+            }catch (Exception e){
+                System.err.println(e.getMessage());
             }
 
         } catch (SQLException | ClassNotFoundException | IdNaoEncontradoException e) {
